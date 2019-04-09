@@ -306,6 +306,7 @@ public class SalesforceBulkInputPlugin
         @Override
         public void stringColumn(Column column) {
             String value = row.get(column.getName());
+            value = new String(value.getBytes("Shift-JIS"),"UTF-8");
             if (value == null) {
                 pageBuilder.setNull(column);
             } else {
